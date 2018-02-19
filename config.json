@@ -1,0 +1,6 @@
+{
+	"logPath": ".",
+	"configPath": ".",
+	"workersNumber": 25,
+	"updateTimeout": "1m"
+}
