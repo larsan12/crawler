@@ -18,8 +18,9 @@ type ICORatingWorker struct {
 func (worker *ICORatingWorker) Start() error {
 	for _, link := range worker.links {
 		entity, _ := worker.GetDetails(link)
-		outputPath := "./data/icorating/" + entity.Title + ".json"
-		writer.WriteToFS(outputPath, entity)
+		outputPath := "./data/icorating/"
+		outFilename := entity.Title + ".json"
+		writer.WriteToFS(outputPath, outFilename, entity)
 	}
 	return nil
 }

@@ -4,12 +4,19 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"os"
+	"path"
+
+	"github.com/visheratin/ico-crawler/misc"
 )
 
-func WriteToFS(path string, entity interface{}) error {
+func WriteToFS(outPath string, filename string, entity interface{}) error {
 	res, _ := json.Marshal(entity)
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		ioutil.WriteFile(path, res, 0777)
+	os.MkdirAll(outPath, 0777)
+	filepath := path.Join(outPath, filename)
+	if _, err := os.Stat(filepath); os.IsNotExist(err) {
+		ioutil.WriteFile(filepath, res, 0777)
+	} else {
+		misc.LogError(err)
 	}
 	return nil
 }
