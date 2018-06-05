@@ -1,8 +1,8 @@
 package main
 
 import (
-	crawler "github.com/visheratin/ico-crawler/crawler/icorating"
-	"github.com/visheratin/ico-crawler/misc"
+	crawler "myCrawler/crawler/icorating"
+	"myCrawler/misc"
 )
 
 func main() {

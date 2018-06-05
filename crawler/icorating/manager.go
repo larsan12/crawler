@@ -3,11 +3,12 @@ package crawler
 import (
 	"time"
 
+	"myCrawler/misc"
+
 	"github.com/PuerkitoBio/goquery"
-	"github.com/visheratin/ico-crawler/misc"
 )
 
-var mainLink = "https://icorating.com/ico/?filter=all"
+var mainLink = "https://icodrops.com/category/ended-ico/"
 
 type ICORatingCrawler struct {
 	workers []*ICORatingWorker
@@ -58,8 +59,9 @@ func (crawler *ICORatingCrawler) GetEntitiesLinks(mainPageLink string) ([]string
 		return nil, err
 	}
 	result := []string{}
-	doc.Find("tr").Each(func(i int, s *goquery.Selection) {
-		href, found := s.Attr("data-href")
+	doc.Find("div.col-md-12").Each(func(i int, s *goquery.Selection) {
+		aBlock := s.Find("a")
+		href, found := aBlock.Attr("href")
 		if found {
 			result = append(result, href)
 		}

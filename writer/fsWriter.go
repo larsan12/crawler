@@ -6,7 +6,7 @@ import (
 	"os"
 	"path"
 
-	"github.com/visheratin/ico-crawler/misc"
+	"myCrawler/misc"
 )
 
 func WriteToFS(outPath string, filename string, entity interface{}) error {
